@@ -132,11 +132,17 @@ export default function Contact() {
             <div className="text-center text-muted">Loading...</div>
           ) : submitted ? (
             <div className="bg-accent/10 border border-accent rounded-lg p-6 text-center">
-              <p className="text-accent font-medium">Thank you for your message!</p>
+              <p className="text-accent font-medium">✓ Thank you for your message!</p>
               <p className="text-accent/80 text-sm mt-2">I'll get back to you as soon as possible.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {error && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm">
+                  {error}
+                </div>
+              )}
+              
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-900 mb-2">
                   Name
@@ -148,7 +154,8 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={isLoading}
+                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
                   placeholder="Your name"
                 />
               </div>
@@ -164,7 +171,8 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={isLoading}
+                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -180,7 +188,8 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  disabled={isLoading}
+                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
                   placeholder="What is this about?"
                 />
               </div>
@@ -195,17 +204,19 @@ export default function Contact() {
                   value={formData.message}
                   onChange={handleInputChange}
                   required
+                  disabled={isLoading}
                   rows="6"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none disabled:bg-slate-50"
                   placeholder="Tell me more about your inquiry..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-slate-900 text-white py-3 rounded-md font-medium hover:bg-slate-800 transition-all"
+                disabled={isLoading}
+                className="w-full bg-slate-900 text-white py-3 rounded-md font-medium hover:bg-slate-800 transition-all disabled:bg-slate-500 disabled:cursor-not-allowed"
               >
-                Send Message
+                {isLoading ? 'Sending...' : 'Send Message'}
               </button>
               
               <p className="text-xs text-slate-500 text-center">
