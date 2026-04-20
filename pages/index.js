@@ -72,8 +72,8 @@ export default function Home() {
             <ul className="text-secondary space-y-2 text-sm">
               <li>• Retrieval-Augmented Generation (RAG)</li>
               <li>• Natural Language Processing</li>
-              <li>• Conversational AI Systems</li>
-              <li>• Source-grounded AI</li>
+              <li>• Information Retrieval</li>
+              <li>• Machine Learning/Deep Learning</li>
             </ul>
           </div>
           <div className="card space-y-3 p-6">
@@ -81,17 +81,17 @@ export default function Home() {
             <ul className="text-secondary space-y-2 text-sm">
               <li>• CollEX: Multimodal Agentic RAG</li>
               <li>• POL-App: Medical RAG System</li>
-              <li>• Scientific Literature Analysis</li>
-              <li>• Impact Assessment NLP</li>
+              <li>• Impact Assessment </li>
+              <li>• UHH Tool Catalogue</li>
             </ul>
           </div>
           <div className="card space-y-3 p-6">
             <h3 className="text-sm font-bold uppercase tracking-widest text-primary">Technical Stack</h3>
             <ul className="text-secondary space-y-2 text-sm">
-              <li>• Python, PyTorch, scikit-learn</li>
-              <li>• Docker, Git, LaTeX</li>
-              <li>• Chroma, OpenWebUI</li>
-              <li>• Django, Flask, Next.js</li>
+              <li>• Python, C/C++, SQL, JavaScript</li>
+              <li>• PyTorch, scikit-learn, pandas, NumPy</li>
+              <li>• Flask, Django, Next.js, Chroma, SQLAlchemy</li>
+              <li>• Docker, Git, LaTeX, OpenWebUI</li>
             </ul>
           </div>
         </section>
