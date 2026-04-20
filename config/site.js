@@ -8,7 +8,7 @@ export const siteConfig = {
   name: 'Niloufar Baba Ahmadi',
   shortName: 'Niloufar',
   title: 'NLP & RAG Researcher',
-  description: 'Graduate researcher specializing in Natural Language Processing and Retrieval-Augmented Generation',
+  description: 'I am a graduate researcher with years of experience in Natural Language Processing (NLP) and Retrieval-Augmented Generation (RAG)',
   degree: 'M.Sc. Intelligent Adaptive Systems',
   university: 'Universität Hamburg',
   location: 'Hamburg, Germany',
@@ -19,7 +19,7 @@ export const siteConfig = {
   
   // Social & External Links
   github: 'https://github.com/nilix-ba',
-  linkedIn: 'https://www.linkedin.com/in/niloufar-babaahmadi',
+  linkedIn: 'https://www.linkedin.com/in/niloufar-babaahmadi/',
   
   // Internal Routes
   routes: {

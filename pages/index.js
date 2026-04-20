@@ -35,10 +35,10 @@ export default function Home() {
             </div>
             <div className="space-y-4">
               <p className="text-lg text-secondary leading-relaxed">
-                {siteConfig.description}. <strong>Retrieval-Augmented Generation (RAG)</strong>, and <strong>source-grounded conversational systems</strong>.
+                I am an <strong>AI Engineer and Graduate Researcher</strong> with years of experience specializing in <strong>Natural Language Processing (NLP)</strong> and <strong>Retrieval-Augmented Generation (RAG)</strong>. I focus on translating state-of-the-art research into production-ready AI backends and functional prototypes.            
               </p>
               <p className="text-base text-secondary leading-relaxed">
-                Currently pursuing my {siteConfig.degree} at {siteConfig.university}. My research focuses on architecting RAG systems for medical diagnostics, scientific literature analysis, and impact assessment—bridging the gap between foundational NLP research and practical AI applications.
+              Currently a Research Assistant at Universität Hamburg, I architect source-grounded systems for various domains including medical diagnostic support and automated impact reporting. My expertise lies in building robust, full-stack AI solutions using Python, Django and Next.js, moving beyond research theory to deliver practical, scalable applications.  
               </p>
             </div>
             <div className="pt-4 flex gap-4">

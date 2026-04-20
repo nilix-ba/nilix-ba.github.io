@@ -18,7 +18,6 @@ export default function Contact() {
 
   useEffect(() => {
     setIsHydrated(true)
-    // Initialize EmailJS
     emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '')
   }, [])
 
@@ -51,11 +50,9 @@ export default function Contact() {
 
       setSubmitted(true)
       setFormData({ name: '', email: '', subject: '', message: '' })
-      setTimeout(() => {
-        setSubmitted(false)
-      }, 5000)
+      setTimeout(() => setSubmitted(false), 5000)
     } catch (err) {
-      setError('Failed to send message. Please try again or contact directly via email.')
+      setError('Failed to send message. Please try again.')
       console.error('EmailJS error:', err)
     } finally {
       setIsLoading(false)
@@ -68,7 +65,6 @@ export default function Contact() {
         <title>Contact | {siteConfig.name}</title>
       </Head>
 
-      {/* Navigation */}
       <nav className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
         <Link href={siteConfig.routes.home} className="text-xl font-medium tracking-tight nav-link">
           {siteConfig.name}
@@ -87,7 +83,6 @@ export default function Contact() {
           I'm interested in research collaborations and speaking opportunities. Feel free to reach out!
         </p>
 
-        {/* Contact Information */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <div className="card p-6">
             <h3 className="text-lg font-semibold text-primary mb-4">Direct Contact</h3>
@@ -99,8 +94,10 @@ export default function Contact() {
                 </a>
               </div>
               <div>
-                <p className="text-sm text-muted uppercase tracking-wide mb-1">Location</p>
-                <p className="text-primary">{siteConfig.location}</p>
+                <p className="text-sm text-muted uppercase tracking-wide mb-1">LinkedIn</p>
+                <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  View Profile
+                </a>
               </div>
               <div>
                 <p className="text-sm text-muted uppercase tracking-wide mb-1">GitHub</p>
@@ -115,16 +112,13 @@ export default function Contact() {
             <h3 className="text-lg font-semibold text-primary mb-4">Quick Inquiry Types</h3>
             <ul className="space-y-2 text-secondary text-sm">
               <li>• Research collaboration inquiries</li>
-              <li>• Speaking engagements & conferences</li>
-              <li>• Project-based consulting</li>
+              <li>• Speaking engagements</li>
               <li>• Academic partnerships</li>
               <li>• Industry collaboration</li>
-              <li>• General research discussions</li>
             </ul>
           </div>
         </section>
 
-        {/* Contact Form */}
         <section className="card p-8">
           <h2 className="text-2xl font-semibold mb-6 text-primary">Send a Message</h2>
           
@@ -133,112 +127,39 @@ export default function Contact() {
           ) : submitted ? (
             <div className="bg-accent/10 border border-accent rounded-lg p-6 text-center">
               <p className="text-accent font-medium">✓ Thank you for your message!</p>
-              <p className="text-accent/80 text-sm mt-2">I'll get back to you as soon as possible.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
-              {error && (
-                <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm">
-                  {error}
-                </div>
-              )}
-              
+              {error && <div className="text-red-700 text-sm">{error}</div>}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-slate-900 mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  disabled={isLoading}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
-                  placeholder="Your name"
-                />
+                <label className="block text-sm font-medium text-slate-900 mb-2">Name</label>
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-4 py-2 border rounded-md" placeholder="Your name" />
               </div>
-
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-slate-900 mb-2">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  disabled={isLoading}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
-                  placeholder="your.email@example.com"
-                />
+                <label className="block text-sm font-medium text-slate-900 mb-2">Email</label>
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-4 py-2 border rounded-md" placeholder="your.email@example.com" />
               </div>
-
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-slate-900 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  disabled={isLoading}
-                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-slate-50"
-                  placeholder="What is this about?"
-                />
+                <label className="block text-sm font-medium text-slate-900 mb-2">Subject</label>
+                <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} required className="w-full px-4 py-2 border rounded-md" placeholder="What is this about?" />
               </div>
-
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-slate-900 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  disabled={isLoading}
-                  rows="6"
-                  className="w-full px-4 py-2 border border-slate-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none disabled:bg-slate-50"
-                  placeholder="Tell me more about your inquiry..."
-                ></textarea>
+                <label className="block text-sm font-medium text-slate-900 mb-2">Message</label>
+                <textarea name="message" value={formData.message} onChange={handleInputChange} required rows="6" className="w-full px-4 py-2 border rounded-md resize-none" placeholder="Tell me more..."></textarea>
               </div>
-
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="w-full bg-slate-900 text-white py-3 rounded-md font-medium hover:bg-slate-800 transition-all disabled:bg-slate-500 disabled:cursor-not-allowed"
-              >
+              <button type="submit" disabled={isLoading} className="w-full bg-slate-900 text-white py-3 rounded-md font-medium hover:bg-slate-800 disabled:bg-slate-500">
                 {isLoading ? 'Sending...' : 'Send Message'}
               </button>
-              
-              <p className="text-xs text-slate-500 text-center">
-                I typically respond to inquiries within 2-3 business days.
-              </p>
             </form>
           )}
         </section>
 
-        {/* Alternative Contact Methods */}
         <section className="mt-12 card-neutral p-6 rounded-lg">
           <h3 className="text-lg font-semibold text-primary mb-4">Prefer a Different Approach?</h3>
-          <p className="section-description mb-4">
-            You can also reach out directly via email or check my GitHub profile for code examples and projects.
-          </p>
-          <div className="flex gap-4">
-            <a href={`mailto:${siteConfig.email}`} className="btn-primary">
-              Send Direct Email
-            </a>
-            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="btn-secondary">
-              Visit GitHub
-            </a>
+          <div className="flex flex-wrap gap-4">
+            <a href={`mailto:${siteConfig.email}`} className="btn-primary">Email</a>
+            <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="btn-secondary">LinkedIn Profile</a>
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="btn-secondary">Visit GitHub</a>
           </div>
         </section>
       </main>
@@ -248,6 +169,7 @@ export default function Contact() {
           <p>{siteConfig.copyrightText}</p>
           <div className="flex gap-6 mt-4 md:mt-0">
             <a href={`mailto:${siteConfig.email}`} className="link-light">Email</a>
+            <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="link-light">LinkedIn</a>
             <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="link-light">GitHub</a>
             <Link href={siteConfig.routes.research} className="link-light">Research</Link>
           </div>
