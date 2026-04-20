@@ -1,22 +1,23 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { siteConfig } from '../config/site'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F0F2F5] text-slate-900 font-sans" suppressHydrationWarning>
+    <div className="min-h-screen bg-cream text-primary font-sans" suppressHydrationWarning>
       <Head>
-        <title>Niloufar Baba Ahmadi | NLP & RAG Researcher</title>
+        <title>{siteConfig.name} | {siteConfig.title}</title>
       </Head>
 
       {/* Minimalist Navigation */}
       <nav className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
-        <Link href="/" className="text-xl font-medium tracking-tight hover:text-slate-600 transition-colors">
-          Niloufar B. Ahmadi
+        <Link href={siteConfig.routes.home} className="text-xl font-medium tracking-tight nav-link">
+          {siteConfig.shortName}
         </Link>
         <div className="flex items-center gap-8 text-sm font-medium">
-          <Link href="/research" className="hover:text-blue-600 transition-colors">Research</Link>
-          <Link href="/publications" className="hover:text-blue-600 transition-colors">Publications</Link>
-          <Link href="/contact" className="bg-black text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all">Contact</Link>
+          <Link href={siteConfig.routes.research} className="nav-link">Research</Link>
+          <Link href={siteConfig.routes.publications} className="nav-link">Publications</Link>
+          <Link href={siteConfig.routes.contact} className="btn-primary rounded-full">Contact</Link>
         </div>
       </nav>
 
@@ -27,26 +28,26 @@ export default function Home() {
           {/* Text Content */}
           <div className="lg:w-1/2 space-y-8">
             <div>
-              <p className="text-sm uppercase tracking-widest text-slate-500 mb-2">M.Sc. Intelligent Adaptive Systems</p>
-              <h1 className="text-5xl md:text-6xl font-serif leading-tight">
-                Niloufar Baba Ahmadi
+              <p className="text-sm uppercase tracking-widest text-muted mb-2">{siteConfig.degree}</p>
+              <h1 className="text-5xl md:text-6xl font-serif leading-tight text-primary">
+                {siteConfig.name}
               </h1>
             </div>
             <div className="space-y-4">
-              <p className="text-lg text-slate-700 leading-relaxed">
-                Graduate researcher specializing in <strong>Natural Language Processing</strong>, <strong>Retrieval-Augmented Generation (RAG)</strong>, and <strong>source-grounded conversational systems</strong>.
+              <p className="text-lg text-secondary leading-relaxed">
+                {siteConfig.description}. <strong>Retrieval-Augmented Generation (RAG)</strong>, and <strong>source-grounded conversational systems</strong>.
               </p>
-              <p className="text-base text-slate-600 leading-relaxed">
-                Currently pursuing my M.Sc. at Universität Hamburg. My research focuses on architecting RAG systems for medical diagnostics, scientific literature analysis, and impact assessment—bridging the gap between foundational NLP research and practical AI applications.
+              <p className="text-base text-secondary leading-relaxed">
+                Currently pursuing my {siteConfig.degree} at {siteConfig.university}. My research focuses on architecting RAG systems for medical diagnostics, scientific literature analysis, and impact assessment—bridging the gap between foundational NLP research and practical AI applications.
               </p>
             </div>
             <div className="pt-4 flex gap-4">
-              <a href="/research" className="bg-slate-900 text-white px-8 py-3 rounded-md text-base font-medium hover:bg-slate-800 transition-all">
+              <Link href={siteConfig.routes.research} className="btn-primary inline-block">
                 Research
-              </a>
-              <a href="/contact" className="border border-slate-300 text-slate-900 px-8 py-3 rounded-md text-base font-medium hover:bg-slate-50 transition-all">
+              </Link>
+              <Link href={siteConfig.routes.contact} className="btn-secondary inline-block">
                 Get in Touch
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -60,33 +61,33 @@ export default function Home() {
               />
             </div>
             {/* Subtle background accent shape to make it unique */}
-            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>
+            <div className="absolute -bottom-6 -right-6 w-64 h-64 bg-accent rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
           </div>
         </div>
 
         {/* Research Areas Section */}
         <section className="mt-32 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="space-y-3 p-6 bg-white rounded-lg border border-slate-200">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-600">Research Areas</h3>
-            <ul className="text-slate-700 space-y-2 text-sm">
+          <div className="card space-y-3 p-6">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-primary">Research Areas</h3>
+            <ul className="text-secondary space-y-2 text-sm">
               <li>• Retrieval-Augmented Generation (RAG)</li>
               <li>• Natural Language Processing</li>
               <li>• Conversational AI Systems</li>
               <li>• Source-grounded AI</li>
             </ul>
           </div>
-          <div className="space-y-3 p-6 bg-white rounded-lg border border-slate-200">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-600">Key Projects</h3>
-            <ul className="text-slate-700 space-y-2 text-sm">
+          <div className="card space-y-3 p-6">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-primary">Key Projects</h3>
+            <ul className="text-secondary space-y-2 text-sm">
               <li>• CollEX: Multimodal Agentic RAG</li>
               <li>• POL-App: Medical RAG System</li>
               <li>• Scientific Literature Analysis</li>
               <li>• Impact Assessment NLP</li>
             </ul>
           </div>
-          <div className="space-y-3 p-6 bg-white rounded-lg border border-slate-200">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-slate-600">Technical Stack</h3>
-            <ul className="text-slate-700 space-y-2 text-sm">
+          <div className="card space-y-3 p-6">
+            <h3 className="text-sm font-bold uppercase tracking-widest text-primary">Technical Stack</h3>
+            <ul className="text-secondary space-y-2 text-sm">
               <li>• Python, PyTorch, scikit-learn</li>
               <li>• Docker, Git, LaTeX</li>
               <li>• Chroma, OpenWebUI</li>
@@ -96,13 +97,13 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="px-8 py-8 border-t border-slate-200 mt-32">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-          <p>© 2026 Niloufar Baba Ahmadi. All rights reserved.</p>
+      <footer className="px-8 py-8 divider mt-32">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-muted text-sm">
+          <p>{siteConfig.copyrightText}</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="mailto:niloufar.baba.ahmadi@studium.uni-hamburg.de" className="hover:text-slate-900 transition-colors">Email</a>
-            <a href="https://github.com/niloufarbabaahmadi" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">GitHub</a>
-            <a href="/research" className="hover:text-slate-900 transition-colors">Research</a>
+            <a href={`mailto:${siteConfig.email}`} className="link-light">Email</a>
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="link-light">GitHub</a>
+            <Link href={siteConfig.routes.research} className="link-light">Research</Link>
           </div>
         </div>
       </footer>

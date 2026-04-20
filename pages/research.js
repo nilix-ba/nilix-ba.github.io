@@ -1,31 +1,32 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { siteConfig } from '../config/site'
 
 export default function Research() {
   return (
-    <div className="min-h-screen bg-[#F0F2F5] text-slate-900 font-sans" suppressHydrationWarning>
+    <div className="min-h-screen bg-cream text-primary font-sans" suppressHydrationWarning>
       <Head>
-        <title>Research | Niloufar Baba Ahmadi</title>
+        <title>Research | {siteConfig.name}</title>
       </Head>
 
       {/* Navigation */}
       <nav className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
-        <Link href="/" className="text-xl font-medium tracking-tight hover:text-slate-600 transition-colors">
-          Niloufar B. Ahmadi
+        <Link href={siteConfig.routes.home} className="text-xl font-medium tracking-tight nav-link">
+          {siteConfig.name}
         </Link>
         <div className="flex items-center gap-8 text-sm font-medium">
-          <Link href="/research" className="text-blue-600">Research</Link>
-          <Link href="/publications" className="hover:text-blue-600 transition-colors">Publications</Link>
-          <Link href="/contact" className="bg-black text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all">Contact</Link>
+          <Link href={siteConfig.routes.research} className="nav-link-active">Research</Link>
+          <Link href={siteConfig.routes.publications} className="nav-link">Publications</Link>
+          <Link href={siteConfig.routes.contact} className="btn-primary rounded-full">Contact</Link>
         </div>
       </nav>
 
       <main className="max-w-4xl mx-auto px-8 py-12">
-        <h1 className="text-4xl md:text-5xl font-serif mb-8">Research</h1>
+        <h1 className="text-4xl md:text-5xl font-serif mb-8 text-primary">Research</h1>
         
         {/* Research Focus */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-slate-900">Research Focus</h2>
+          <h2 className="section-header">Research Focus</h2>
           <div className="space-y-6">
             <div>
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Retrieval-Augmented Generation (RAG)</h3>
@@ -52,19 +53,19 @@ export default function Research() {
 
         {/* Featured Projects */}
         <section className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-slate-900">Featured Projects</h2>
+          <h2 className="section-header">Featured Projects</h2>
           
           <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg border border-slate-200">
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">CollEX: Multimodal Agentic RAG</h3>
-              <p className="text-sm text-slate-500 mb-4">Co-authored publication</p>
-              <p className="text-slate-700 leading-relaxed mb-4">
+            <div className="card space-y-4">
+              <h3 className="text-xl font-semibold text-primary mb-2">CollEX: Multimodal Agentic RAG</h3>
+              <p className="text-sm text-muted mb-4">Co-authored publication</p>
+              <p className="section-description mb-4">
                 A multimodal system enabling interactive exploration and retrieval from 64,000+ scientific records. CollEX combines agentic reasoning with advanced retrieval mechanisms to support complex scientific discovery workflows.
               </p>
               <div className="flex gap-3">
-                <span className="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded">Multimodal RAG</span>
-                <span className="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded">Agentic Systems</span>
-                <span className="text-xs bg-slate-100 text-slate-700 px-3 py-1 rounded">Scientific Discovery</span>
+                <span className="badge-accent">Multimodal RAG</span>
+                <span className="badge-accent">Agentic Systems</span>
+                <span className="badge-accent">Scientific Discovery</span>
               </div>
             </div>
 
@@ -104,43 +105,43 @@ export default function Research() {
           </p>
           <ul className="space-y-3 text-slate-700">
             <li className="flex gap-3">
-              <span className="text-blue-600 font-semibold">•</span>
+              <span className="text-accent font-semibold">•</span>
               <span><strong>Source Grounding:</strong> Ensuring all generated information can be traced to specific sources, particularly critical in medical and scientific contexts.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue-600 font-semibold">•</span>
+              <span className="text-accent font-semibold">•</span>
               <span><strong>Multimodal Integration:</strong> Combining text, structured data, and other modalities to create comprehensive knowledge systems.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue-600 font-semibold">•</span>
+              <span className="text-accent font-semibold">•</span>
               <span><strong>Practical Application:</strong> Bridging research models with real-world deployments that provide tangible value.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-blue-600 font-semibold">•</span>
+              <span className="text-accent font-semibold">•</span>
               <span><strong>Human-in-the-Loop Design:</strong> Developing systems that augment human expertise rather than replace it.</span>
             </li>
           </ul>
         </section>
 
         {/* Call to Action */}
-        <section className="bg-white p-8 rounded-lg border border-slate-200 mb-12">
-          <h2 className="text-xl font-semibold mb-4">Interested in discussing research collaboration?</h2>
-          <p className="text-slate-700 mb-6">
+        <section className="card p-8 mb-12">
+          <h2 className="text-xl font-semibold mb-4 text-primary">Interested in discussing research collaboration?</h2>
+          <p className="section-description mb-6">
             I am open to research conversations, collaborations, and feedback on ongoing projects.
           </p>
-          <Link href="/contact" className="bg-slate-900 text-white px-6 py-3 rounded-md font-medium hover:bg-slate-800 transition-all inline-block">
+          <Link href={siteConfig.routes.contact} className="btn-primary inline-block">
             Get in Touch
           </Link>
         </section>
       </main>
 
-      <footer className="px-8 py-8 border-t border-slate-200 mt-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-          <p>© 2026 Niloufar Baba Ahmadi. All rights reserved.</p>
+      <footer className="px-8 py-8 divider mt-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-muted text-sm">
+          <p>{siteConfig.copyrightText}</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="mailto:niloufar.baba.ahmadi@studium.uni-hamburg.de" className="hover:text-slate-900 transition-colors">Email</a>
-            <a href="https://github.com/niloufarbabaahmadi" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">GitHub</a>
-            <Link href="/publications" className="hover:text-slate-900 transition-colors">Publications</Link>
+            <a href={`mailto:${siteConfig.email}`} className="link-light">Email</a>
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="link-light">GitHub</a>
+            <Link href={siteConfig.routes.publications} className="link-light">Publications</Link>
           </div>
         </div>
       </footer>

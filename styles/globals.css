@@ -1,3 +1,220 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Color Palette */
+:root {
+  /* Primary Colors */
+  --color-cream-light: #f5ebe0;
+  --color-cream-lighter: #edede9;
+  --color-beige-light: #e3d5ca;
+  --color-beige-warm: #d5bdaf;
+  --color-beige-gold: #e7bc91;
+  --color-beige-dusty: #d6ccc2;
+  --color-white: #ffffff;
+
+  /* Text Colors */
+  --color-text-dark: #2d2624;
+  --color-text-light: #6b6562;
+  --color-text-muted: #9a9390;
+
+  /* Background */
+  --color-bg-primary: #f5ebe0;
+  --color-bg-secondary: #ffffff;
+  --color-bg-accent: #edede9;
+
+  /* Accent */
+  --color-accent-primary: #e7bc91;
+  --color-accent-secondary: #d5bdaf;
+  --color-accent-hover: #d9a876;
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#f5ebe0] text-[#2d2624];
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-[#2d2624] font-serif;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  button {
+    @apply transition-all duration-200;
+  }
+}
+
+/* Component Styles */
+@layer components {
+  /* Cards */
+  .card {
+    @apply bg-white rounded-lg border border-[#e3d5ca] shadow-sm hover:shadow-md transition-shadow;
+  }
+
+  .card-neutral {
+    @apply bg-[#edede9] rounded-lg border border-[#d6ccc2];
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply bg-[#2d2624] text-white px-6 py-3 rounded-md font-medium hover:bg-[#1f1b19] transition-all;
+  }
+
+  .btn-secondary {
+    @apply border border-[#d5bdaf] text-[#2d2624] px-6 py-3 rounded-md font-medium hover:bg-[#f5ebe0] transition-all;
+  }
+
+  .btn-accent {
+    @apply bg-[#e7bc91] text-white px-6 py-3 rounded-md font-medium hover:bg-[#d9a876] transition-all;
+  }
+
+  .btn-ghost {
+    @apply text-[#2d2624] px-4 py-2 rounded hover:bg-[#edede9] transition-all;
+  }
+
+  /* Links */
+  .link-primary {
+    @apply text-[#2d2624] underline hover:text-[#d5bdaf] transition-colors;
+  }
+
+  .link-accent {
+    @apply text-[#e7bc91] hover:text-[#d9a876] transition-colors;
+  }
+
+  .link-light {
+    @apply text-[#6b6562] hover:text-[#2d2624] transition-colors;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-[#2d2624] hover:text-[#e7bc91] transition-colors;
+  }
+
+  .nav-link-active {
+    @apply text-[#e7bc91] font-medium;
+  }
+
+  /* Sections */
+  .section-header {
+    @apply text-2xl md:text-3xl font-serif text-[#2d2624] mb-6;
+  }
+
+  .section-description {
+    @apply text-[#6b6562] leading-relaxed;
+  }
+
+  /* Badges */
+  .badge {
+    @apply inline-block bg-[#e3d5ca] text-[#2d2624] px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-accent {
+    @apply inline-block bg-[#e7bc91] text-white px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-light {
+    @apply inline-block bg-[#edede9] text-[#6b6562] px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-[#d6ccc2];
+  }
+
+  .divider-accent {
+    @apply border-t-2 border-[#e7bc91];
+  }
+
+  /* Form Elements */
+  .input-base {
+    @apply w-full px-4 py-2 border border-[#d6ccc2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#e7bc91] focus:border-transparent;
+  }
+
+  .input-base:placeholder {
+    @apply text-[#9a9390];
+  }
+
+  /* Highlight */
+  .highlight {
+    @apply bg-[#e7bc91] text-white px-1 py-0.5 rounded;
+  }
+
+  /* Accent Bar */
+  .accent-bar {
+    @apply border-l-4 border-[#e7bc91] pl-4;
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+  .text-primary {
+    @apply text-[#2d2624];
+  }
+
+  .text-secondary {
+    @apply text-[#6b6562];
+  }
+
+  .text-muted {
+    @apply text-[#9a9390];
+  }
+
+  .text-accent {
+    @apply text-[#e7bc91];
+  }
+
+  .bg-cream {
+    @apply bg-[#f5ebe0];
+  }
+
+  .bg-beige {
+    @apply bg-[#e3d5ca];
+  }
+
+  .bg-accent {
+    @apply bg-[#e7bc91];
+  }
+
+  .border-accent {
+    @apply border-[#d5bdaf];
+  }
+
+  .hover-accent:hover {
+    @apply text-[#e7bc91] transition-colors;
+  }
+
+  .transition-smooth {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+/* Responsive Utilities */
+@media (max-width: 768px) {
+  .section-header {
+    @apply text-xl md:text-2xl;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    @apply bg-white;
+  }
+
+  .no-print {
+    @apply hidden;
+  }
+}

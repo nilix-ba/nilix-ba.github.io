@@ -3,10 +3,14 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
 # Next.js
 .next/
 out/
+dist/
+build/
 
 # Environment variables
 .env
@@ -14,11 +18,68 @@ out/
 .env.development.local
 .env.test.local
 .env.production.local
+.env*.local
+.env.*.local
+
+# Credentials & API Keys
+.aws/
+.aws-credentials
+credentials
+config/credentials.js
+config/secrets.js
+*.pem
+*.key
+*.p8
+.ssh/
 
 # IDE
 .vscode/
+.vscode/*
+!.vscode/extensions.json
 .idea/
+.idea/*
+*.swp
+*.swo
+*~
+.sublime-project
+.sublime-workspace
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+desktop.ini
+
+# Logs
+logs/
+*.log
+lerna-debug.log*
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+
+# Testing
+.nyc_output/
+coverage/
+*.lcov
+
+# Misc
+.cache/
+.parcel-cache/
+.eslintcache
+*.swp
+*.swo
+*~
+
+# Sensitive documentation
+sensitive/
+secrets/
+private/
+docs/sensitive/

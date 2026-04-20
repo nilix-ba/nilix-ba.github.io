@@ -1,9 +1,12 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
+import emailjs from '@emailjs/browser'
+import { siteConfig } from '../config/site'
 
 export default function Contact() {
   const [isHydrated, setIsHydrated] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,9 +14,12 @@ export default function Contact() {
     message: ''
   })
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     setIsHydrated(true)
+    // Initialize EmailJS
+    emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '')
   }, [])
 
   const handleInputChange = (e) => {
@@ -22,71 +28,92 @@ export default function Contact() {
       ...prev,
       [name]: value
     }))
+    setError(null)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // In a real application, you would send this data to a backend
-    // For now, we'll just show a success message
-    setSubmitted(true)
-    setTimeout(() => {
-      setSubmitted(false)
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '',
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '',
+        {
+          to_email: siteConfig.email,
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        }
+      )
+
+      setSubmitted(true)
       setFormData({ name: '', email: '', subject: '', message: '' })
-    }, 3000)
+      setTimeout(() => {
+        setSubmitted(false)
+      }, 5000)
+    } catch (err) {
+      setError('Failed to send message. Please try again or contact directly via email.')
+      console.error('EmailJS error:', err)
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
-    <div className="min-h-screen bg-[#F0F2F5] text-slate-900 font-sans" suppressHydrationWarning>
+    <div className="min-h-screen bg-cream text-primary font-sans" suppressHydrationWarning>
       <Head>
-        <title>Contact | Niloufar Baba Ahmadi</title>
+        <title>Contact | {siteConfig.name}</title>
       </Head>
 
       {/* Navigation */}
       <nav className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
-        <Link href="/" className="text-xl font-medium tracking-tight hover:text-slate-600 transition-colors">
-          Niloufar B. Ahmadi
+        <Link href={siteConfig.routes.home} className="text-xl font-medium tracking-tight nav-link">
+          {siteConfig.name}
         </Link>
         <div className="flex items-center gap-8 text-sm font-medium">
-          <Link href="/research" className="hover:text-blue-600 transition-colors">Research</Link>
-          <Link href="/publications" className="hover:text-blue-600 transition-colors">Publications</Link>
-          <Link href="/contact" className="text-blue-600">Contact</Link>
+          <Link href={siteConfig.routes.research} className="nav-link">Research</Link>
+          <Link href={siteConfig.routes.publications} className="nav-link">Publications</Link>
+          <Link href={siteConfig.routes.contact} className="nav-link-active">Contact</Link>
         </div>
       </nav>
 
       <main className="max-w-2xl mx-auto px-8 py-12">
-        <h1 className="text-4xl md:text-5xl font-serif mb-6">Get in Touch</h1>
+        <h1 className="text-4xl md:text-5xl font-serif mb-6 text-primary">Get in Touch</h1>
         
-        <p className="text-slate-700 text-lg mb-12">
-          I'm interested in research collaborations, speaking opportunities, and engaging discussions about NLP, RAG systems, and conversational AI. Feel free to reach out!
+        <p className="section-description text-lg mb-12">
+          I'm interested in research collaborations and speaking opportunities. Feel free to reach out!
         </p>
 
         {/* Contact Information */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <div className="bg-white p-6 rounded-lg border border-slate-200">
-            <h3 className="text-lg font-semibold text-slate-900 mb-4">Direct Contact</h3>
+          <div className="card p-6">
+            <h3 className="text-lg font-semibold text-primary mb-4">Direct Contact</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-sm text-slate-500 uppercase tracking-wide mb-1">Email</p>
-                <a href="mailto:niloufar.baba.ahmadi@studium.uni-hamburg.de" className="text-blue-600 hover:underline text-slate-900">
-                  niloufar.baba.ahmadi@studium.uni-hamburg.de
+                <p className="text-sm text-muted uppercase tracking-wide mb-1">Email</p>
+                <a href={`mailto:${siteConfig.email}`} className="text-blue-600 hover:underline text-slate-900">
+                  {siteConfig.email}
                 </a>
               </div>
               <div>
-                <p className="text-sm text-slate-500 uppercase tracking-wide mb-1">Location</p>
-                <p className="text-slate-900">Hamburg, Germany</p>
+                <p className="text-sm text-muted uppercase tracking-wide mb-1">Location</p>
+                <p className="text-primary">{siteConfig.location}</p>
               </div>
               <div>
-                <p className="text-sm text-slate-500 uppercase tracking-wide mb-1">GitHub</p>
-                <a href="https://github.com/niloufarbabaahmadi" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
-                  github.com/niloufarbabaahmadi
+                <p className="text-sm text-muted uppercase tracking-wide mb-1">GitHub</p>
+                <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+                  {siteConfig.github}
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-lg border border-slate-200">
-            <h3 className="text-lg font-semibold text-slate-900 mb-4">Quick Inquiry Types</h3>
-            <ul className="space-y-2 text-slate-700 text-sm">
+          <div className="card p-6">
+            <h3 className="text-lg font-semibold text-primary mb-4">Quick Inquiry Types</h3>
+            <ul className="space-y-2 text-secondary text-sm">
               <li>• Research collaboration inquiries</li>
               <li>• Speaking engagements & conferences</li>
               <li>• Project-based consulting</li>
@@ -98,15 +125,15 @@ export default function Contact() {
         </section>
 
         {/* Contact Form */}
-        <section className="bg-white p-8 rounded-lg border border-slate-200">
-          <h2 className="text-2xl font-semibold mb-6 text-slate-900">Send a Message</h2>
+        <section className="card p-8">
+          <h2 className="text-2xl font-semibold mb-6 text-primary">Send a Message</h2>
           
           {!isHydrated ? (
-            <div className="text-center text-slate-500">Loading...</div>
+            <div className="text-center text-muted">Loading...</div>
           ) : submitted ? (
-            <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-              <p className="text-green-800 font-medium">Thank you for your message!</p>
-              <p className="text-green-700 text-sm mt-2">I'll get back to you as soon as possible.</p>
+            <div className="bg-accent/10 border border-accent rounded-lg p-6 text-center">
+              <p className="text-accent font-medium">Thank you for your message!</p>
+              <p className="text-accent/80 text-sm mt-2">I'll get back to you as soon as possible.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -189,29 +216,29 @@ export default function Contact() {
         </section>
 
         {/* Alternative Contact Methods */}
-        <section className="mt-12 bg-slate-50 p-6 rounded-lg border border-slate-200">
-          <h3 className="text-lg font-semibold text-slate-900 mb-4">Prefer a Different Approach?</h3>
-          <p className="text-slate-700 mb-4">
+        <section className="mt-12 card-neutral p-6 rounded-lg">
+          <h3 className="text-lg font-semibold text-primary mb-4">Prefer a Different Approach?</h3>
+          <p className="section-description mb-4">
             You can also reach out directly via email or check my GitHub profile for code examples and projects.
           </p>
           <div className="flex gap-4">
-            <a href="mailto:niloufar.baba.ahmadi@studium.uni-hamburg.de" className="bg-slate-900 text-white px-6 py-2 rounded-md hover:bg-slate-800 transition-all text-sm font-medium">
+            <a href={`mailto:${siteConfig.email}`} className="btn-primary">
               Send Direct Email
             </a>
-            <a href="https://github.com/niloufarbabaahmadi" target="_blank" rel="noopener noreferrer" className="border border-slate-300 text-slate-900 px-6 py-2 rounded-md hover:bg-white transition-all text-sm font-medium">
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="btn-secondary">
               Visit GitHub
             </a>
           </div>
         </section>
       </main>
 
-      <footer className="px-8 py-8 border-t border-slate-200 mt-16">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-          <p>© 2026 Niloufar Baba Ahmadi. All rights reserved.</p>
+      <footer className="px-8 py-8 divider mt-16">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-muted text-sm">
+          <p>{siteConfig.copyrightText}</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="mailto:niloufar.baba.ahmadi@studium.uni-hamburg.de" className="hover:text-slate-900 transition-colors">Email</a>
-            <a href="https://github.com/niloufarbabaahmadi" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">GitHub</a>
-            <Link href="/research" className="hover:text-slate-900 transition-colors">Research</Link>
+            <a href={`mailto:${siteConfig.email}`} className="link-light">Email</a>
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="link-light">GitHub</a>
+            <Link href={siteConfig.routes.research} className="link-light">Research</Link>
           </div>
         </div>
       </footer>

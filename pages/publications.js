@@ -1,29 +1,30 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { siteConfig } from '../config/site'
 
 export default function Publications() {
   return (
-    <div className="min-h-screen bg-[#F0F2F5] text-slate-900 font-sans" suppressHydrationWarning>
+    <div className="min-h-screen bg-cream text-primary font-sans" suppressHydrationWarning>
       <Head>
-        <title>Publications | Niloufar Baba Ahmadi</title>
+        <title>Publications | {siteConfig.name}</title>
       </Head>
 
       {/* Navigation */}
       <nav className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
-        <Link href="/" className="text-xl font-medium tracking-tight hover:text-slate-600 transition-colors">
-          Niloufar B. Ahmadi
+        <Link href={siteConfig.routes.home} className="text-xl font-medium tracking-tight nav-link">
+          {siteConfig.name}
         </Link>
         <div className="flex items-center gap-8 text-sm font-medium">
-          <Link href="/research" className="hover:text-blue-600 transition-colors">Research</Link>
-          <Link href="/publications" className="text-blue-600">Publications</Link>
-          <Link href="/contact" className="bg-black text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all">Contact</Link>
+          <Link href={siteConfig.routes.research} className="nav-link">Research</Link>
+          <Link href={siteConfig.routes.publications} className="nav-link-active">Publications</Link>
+          <Link href={siteConfig.routes.contact} className="btn-primary rounded-full">Contact</Link>
         </div>
       </nav>
 
       <main className="max-w-4xl mx-auto px-8 py-12">
-        <h1 className="text-4xl md:text-5xl font-serif mb-8">Publications</h1>
+        <h1 className="text-4xl md:text-5xl font-serif mb-8 text-primary">Publications</h1>
         
-        <p className="text-slate-600 mb-12">
+        <p className="text-secondary text-lg mb-12">
           A collection of peer-reviewed publications and research contributions in Natural Language Processing, Retrieval-Augmented Generation, and conversational AI systems.
         </p>
 
@@ -124,34 +125,34 @@ export default function Publications() {
 
         {/* Preprints & Working Papers */}
         <section className="mt-16">
-          <h2 className="text-2xl font-semibold mb-6 text-slate-900">Preprints & Working Papers</h2>
-          <p className="text-slate-700 mb-4">
+          <h2 className="section-header">Preprints & Working Papers</h2>
+          <p className="section-description mb-4">
             Additional research projects and preliminary findings under development. Please check back for updates.
           </p>
-          <div className="bg-slate-50 p-6 rounded-lg border border-slate-200 text-center">
-            <p className="text-slate-600">More preprints and working papers coming soon.</p>
+          <div className="card-neutral p-6 rounded-lg text-center">
+            <p className="text-secondary">More preprints and working papers coming soon.</p>
           </div>
         </section>
 
         {/* Call to Action */}
-        <section className="bg-white p-8 rounded-lg border border-slate-200 mt-12">
-          <h2 className="text-xl font-semibold mb-4">Have questions or want to discuss research?</h2>
-          <p className="text-slate-700 mb-6">
+        <section className="card p-8 mt-12">
+          <h2 className="text-xl font-semibold mb-4 text-primary">Have questions or want to discuss research?</h2>
+          <p className="section-description mb-6">
             I welcome discussions about ongoing projects, potential collaborations, and research inquiries.
           </p>
-          <Link href="/contact" className="bg-slate-900 text-white px-6 py-3 rounded-md font-medium hover:bg-slate-800 transition-all inline-block">
+          <Link href={siteConfig.routes.contact} className="btn-primary inline-block">
             Get in Touch
           </Link>
         </section>
       </main>
 
-      <footer className="px-8 py-8 border-t border-slate-200 mt-12">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
-          <p>© 2026 Niloufar Baba Ahmadi. All rights reserved.</p>
+      <footer className="px-8 py-8 divider mt-12">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-muted text-sm">
+          <p>{siteConfig.copyrightText}</p>
           <div className="flex gap-6 mt-4 md:mt-0">
-            <a href="mailto:niloufar.baba.ahmadi@studium.uni-hamburg.de" className="hover:text-slate-900 transition-colors">Email</a>
-            <a href="https://github.com/niloufarbabaahmadi" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 transition-colors">GitHub</a>
-            <Link href="/research" className="hover:text-slate-900 transition-colors">Research</Link>
+            <a href={`mailto:${siteConfig.email}`} className="link-light">Email</a>
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="link-light">GitHub</a>
+            <Link href={siteConfig.routes.research} className="link-light">Research</Link>
           </div>
         </div>
       </footer>
