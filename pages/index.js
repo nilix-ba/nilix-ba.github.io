@@ -1,21 +1,22 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#F0F2F5] text-slate-900 font-sans">
+    <div className="min-h-screen bg-[#F0F2F5] text-slate-900 font-sans" suppressHydrationWarning>
       <Head>
         <title>Niloufar Baba Ahmadi | NLP & RAG Researcher</title>
       </Head>
 
       {/* Minimalist Navigation */}
       <nav className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
-        <a href="/" className="text-xl font-medium tracking-tight hover:text-slate-600 transition-colors">Niloufar B. Ahmadi</a>
+        <Link href="/" className="text-xl font-medium tracking-tight hover:text-slate-600 transition-colors">
+          Niloufar B. Ahmadi
+        </Link>
         <div className="flex items-center gap-8 text-sm font-medium">
-          <a href="/research" className="hover:text-blue-600 transition-colors">Research</a>
-          <a href="/publications" className="hover:text-blue-600 transition-colors">Publications</a>
-          <a href="/contact" className="bg-black text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all">
-            Contact
-          </a>
+          <Link href="/research" className="hover:text-blue-600 transition-colors">Research</Link>
+          <Link href="/publications" className="hover:text-blue-600 transition-colors">Publications</Link>
+          <Link href="/contact" className="bg-black text-white px-5 py-2.5 rounded-full hover:bg-slate-800 transition-all">Contact</Link>
         </div>
       </nav>
 
