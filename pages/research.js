@@ -25,7 +25,7 @@ export default function Research() {
         <header className="mb-12">
           <h1 className="text-4xl md:text-5xl font-serif mb-4 text-primary">Applied AI & Engineering</h1>
           <p className="section-description text-lg">
-            Specializing in translating Natural Language Processing research into production-ready **Retrieval-Augmented Generation (RAG)** backends and functional AI prototypes[cite: 78, 82, 84].
+            Specializing in translating Natural Language Processing research into production-ready <strong>Retrieval-Augmented Generation (RAG)</strong> backends and functional AI prototypes[cite: 78, 82, 84].
           </p>
         </header>
         
@@ -36,13 +36,13 @@ export default function Research() {
             <div className="accent-bar">
               <h3 className="text-lg font-semibold mb-2">Architecting Scalable RAG</h3>
               <p className="text-sm text-secondary leading-relaxed">
-                Implementing robust data layers and vector stores using **SQLAlchemy** and **Chroma** to transform static documentation into conversational tools[cite: 24, 64, 90].
+                Implementing robust data layers and vector stores using <strong>SQLAlchemy</strong> and <strong>Chroma</strong> to transform static documentation into conversational tools[cite: 24, 64, 90].
               </p>
             </div>
             <div className="accent-bar">
               <h3 className="text-lg font-semibold mb-2">Production Full-Stack AI</h3>
               <p className="text-sm text-secondary leading-relaxed">
-                Bridging deep-learning backends with modern interfaces using **Django** and **Next.js**, specifically focusing on chat streaming and multilingual support[cite: 19, 75, 114].
+                Bridging deep-learning backends with modern interfaces using <strong>Django</strong> and <strong>Next.js</strong>, specifically focusing on chat streaming and multilingual support[cite: 19, 75, 114].
               </p>
             </div>
           </div>
@@ -77,7 +77,7 @@ export default function Research() {
                 <span className="badge-accent">Domain-Specific RAG</span>
               </div>
               <p className="text-sm text-secondary mb-6">
-                Architected a question-answering system over internal documents to measure organizational impact against **Sustainable Development Goal (SDG)** indicators[cite: 20, 21, 79]. Developed optimized retrieval and structured prompting strategies specifically for the German language[cite: 21, 80].
+                Architected a question-answering system over internal documents to measure organizational impact against <strong>Sustainable Development Goal (SDG)</strong> indicators[cite: 20, 21, 79]. Developed optimized retrieval and structured prompting strategies specifically for the German language[cite: 21, 80].
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="badge">Sentence-Transformers</span>
@@ -93,7 +93,7 @@ export default function Research() {
                 <span className="badge-accent">Internal Tooling</span>
               </div>
               <p className="text-sm text-secondary mb-6">
-                Transformed the Universität Hamburg Tool Catalogue into a conversational discovery platform. Designed a robust data layer with **Chroma** and integrated LLMs via **OpenWebUI** within a containerized **Docker** environment[cite: 23, 24, 90, 91].
+                Transformed the Universität Hamburg Tool Catalogue into a conversational discovery platform. Designed a robust data layer with <strong>Chroma</strong> and integrated LLMs via <strong>OpenWebUI</strong> within a containerized <strong>Docker</strong> environment[cite: 23, 24, 90, 91].
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="badge">Flask</span>
@@ -111,7 +111,7 @@ export default function Research() {
             <h3 className="text-xl font-semibold mb-2">CollEX: A Multimodal Agentic RAG System Enabling Interactive Exploration of Scientific Collections</h3>
             <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4">Published 2025 | ArXiv: 2504.07643</p>
             <p className="text-sm text-secondary leading-relaxed mb-6">
-              Co-authored research on an agentic system designed for interactive exploration of 64,000+ scientific records[cite: 11, 13, 106]. Contributed to the development of **typed function-calling** interfaces and multimodal retrieval orchestration logic[cite: 26, 93, 107].
+              Co-authored research on an agentic system designed for interactive exploration of 64,000+ scientific records[cite: 11, 13, 106]. Contributed to the development of <strong>typed function-calling</strong> interfaces and multimodal retrieval orchestration logic[cite: 26, 93, 107].
             </p>
             <div className="flex justify-between items-center">
               <div className="flex gap-2">
