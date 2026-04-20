@@ -25,7 +25,8 @@ export const siteConfig = {
   routes: {
     home: '/',
     research: '/research',
-    publications: '/publications',
+    publications: '/research', // Redirect to research (merged)
+    resume: '/resume',
     contact: '/contact',
   },
 

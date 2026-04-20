@@ -75,7 +75,7 @@ export default function Contact() {
         </Link>
         <div className="flex items-center gap-8 text-sm font-medium">
           <Link href={siteConfig.routes.research} className="nav-link">Research</Link>
-          <Link href={siteConfig.routes.publications} className="nav-link">Publications</Link>
+          <Link href={siteConfig.routes.resume} className="nav-link">Resume</Link>
           <Link href={siteConfig.routes.contact} className="nav-link-active">Contact</Link>
         </div>
       </nav>
