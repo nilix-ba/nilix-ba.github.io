@@ -6,7 +6,7 @@ export default function Research() {
   return (
     <div className="min-h-screen bg-cream text-primary font-sans" suppressHydrationWarning>
       <Head>
-        <title>Applied Research & Solutions | {siteConfig.name}</title>
+          <title>Applied Research & Solutions | {siteConfig.name}</title>
       </Head>
 
       {/* Navigation using nav-link classes from your CSS */}
@@ -22,27 +22,27 @@ export default function Research() {
       </nav>
 
       <main className="max-w-4xl mx-auto px-8 py-12">
-        <header className="mb-12">
+        <header className="mb-12 text-center">
           <h1 className="text-4xl md:text-5xl font-serif mb-4 text-primary">Applied AI & Engineering</h1>
           <p className="section-description text-lg">
-            Specializing in translating Natural Language Processing research into production-ready <strong>Retrieval-Augmented Generation (RAG)</strong> backends and functional AI prototypes[cite: 78, 82, 84].
+            I build reliable, source-grounded AI systems using Natural Language Processing and Retrieval-Augmented Generation, translating research ideas into deployable prototypes for scientific search, medical imaging support and impact reporting. My work reflects an international research trajectory shaped across Germany, Belgium and Iran.
           </p>
         </header>
         
         {/* Engineering Pillars Section */}
-        <section className="mb-16">
+        <section className="mb-16 text-center">
           <h2 className="section-header underline decoration-[#e7bc91]">Engineering Pillars</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="accent-bar">
               <h3 className="text-lg font-semibold mb-2">Architecting Scalable RAG</h3>
               <p className="text-sm text-secondary leading-relaxed">
-                Implementing robust data layers and vector stores using <strong>SQLAlchemy</strong> and <strong>Chroma</strong> to transform static documentation into conversational tools[cite: 24, 64, 90].
+                Designing retrieval pipelines and knowledge interfaces that connect large language models with structured and unstructured data. I build robust data layers using <strong>SQLAlchemy</strong> and <strong>Chroma</strong> to transform static documentation into conversational decision-support tools.  
               </p>
             </div>
             <div className="accent-bar">
               <h3 className="text-lg font-semibold mb-2">Production Full-Stack AI</h3>
               <p className="text-sm text-secondary leading-relaxed">
-                Bridging deep-learning backends with modern interfaces using <strong>Django</strong> and <strong>Next.js</strong>, specifically focusing on chat streaming and multilingual support[cite: 19, 75, 114].
+                Integrating deep-learning backends with modern web interfaces using <strong>Django</strong> and <strong>Next.js</strong>, with a focus on streaming interaction, multilingual behavior and deployment-ready system reliability.  
               </p>
             </div>
           </div>
@@ -50,7 +50,7 @@ export default function Research() {
 
         {/* Featured Technical Implementations */}
         <section className="mb-16">
-          <h2 className="section-header">Technical Implementations</h2>
+          <h2 className="section-header">Selected Production AI Systems</h2>
           <div className="space-y-6">
             
             {/* POL-App Implementation */}
@@ -60,7 +60,7 @@ export default function Research() {
                 <span className="badge-accent">Production Prototype</span>
               </div>
               <p className="text-sm text-secondary mb-6">
-                Engineered a diagnostic support system for medical imaging. Implemented high-performance chat streaming and multilingual behavior to ensure reliable illness reporting in clinical settings[cite: 18, 19, 74, 75].
+                Contributed to the interface layer of a Retrieval-Augmented Generation system supporting diagnostic workflows in medical imaging. Implemented chat streaming behavior and multilingual interaction features using Django and Next.js to support structured illness reporting across clinical contexts.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="badge">Next.js</span>
@@ -77,7 +77,7 @@ export default function Research() {
                 <span className="badge-accent">Domain-Specific RAG</span>
               </div>
               <p className="text-sm text-secondary mb-6">
-                Architected a question-answering system over internal documents to measure organizational impact against <strong>Sustainable Development Goal (SDG)</strong> indicators[cite: 20, 21, 79]. Developed optimized retrieval and structured prompting strategies specifically for the German language[cite: 21, 80].
+                Designed a domain-specific Retrieval-Augmented Generation assistant supporting impact measurement aligned with Sustainable Development Goal (SDG) indicators. Implemented German-language retrieval optimization and developed structured prompting strategies over heterogeneous internal documents to improve answer grounding and reporting reliability.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="badge">Sentence-Transformers</span>
@@ -93,7 +93,7 @@ export default function Research() {
                 <span className="badge-accent">Internal Tooling</span>
               </div>
               <p className="text-sm text-secondary mb-6">
-                Transformed the Universität Hamburg Tool Catalogue into a conversational discovery platform. Designed a robust data layer with <strong>Chroma</strong> and integrated LLMs via <strong>OpenWebUI</strong> within a containerized <strong>Docker</strong> environment[cite: 23, 24, 90, 91].
+                Developed a conversational discovery interface for the Universität Hamburg tool catalogue by constructing the dataset through web scraping and structured preprocessing of institutional web content. Designed the retrieval pipeline using SQLAlchemy and Chroma and integrated LLM interaction via OpenWebUI within a containerized Docker deployment.
               </p>
               <div className="flex flex-wrap gap-2">
                 <span className="badge">Flask</span>
@@ -111,29 +111,32 @@ export default function Research() {
             <h3 className="text-xl font-semibold mb-2">CollEX: A Multimodal Agentic RAG System Enabling Interactive Exploration of Scientific Collections</h3>
             <p className="text-xs font-bold text-accent uppercase tracking-widest mb-4">Published 2025 | ArXiv: 2504.07643</p>
             <p className="text-sm text-secondary leading-relaxed mb-6">
-              Co-authored research on an agentic system designed for interactive exploration of 64,000+ scientific records[cite: 11, 13, 106]. Contributed to the development of <strong>typed function-calling</strong> interfaces and multimodal retrieval orchestration logic[cite: 26, 93, 107].
+              Co-authored CollEX, a multimodal agentic Retrieval-Augmented Generation system supporting interactive exploration of more than 64,000 scientific records. Contributed typed function-calling interfaces and orchestration logic for multimodal retrieval workflows.
             </p>
             <div className="flex justify-between items-center">
               <div className="flex gap-2">
                 <span className="badge-light">Agentic Workflows</span>
                 <span className="badge-light">Multimodal Retrieval</span>
               </div>
-              <a href="#" className="link-accent font-medium text-sm">Read Publication →</a>
+              <a href="https://arxiv.org/abs/2504.07643" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="link-accent font-medium text-sm">Read Publication →</a>
             </div>
           </article>
         </section>
 
         {/* Technical Philosophy Card */}
         <section className="card-neutral p-8 mb-12">
-          <h2 className="text-xl font-semibold mb-4">Engineering Principles</h2>
+          <h2 className="text-xl font-semibold mb-4">System Design Approach</h2>
           <ul className="space-y-4 text-sm text-secondary">
             <li className="flex gap-3">
               <span className="text-accent font-bold">•</span>
-              <span><strong>System Robustness:</strong> Prioritizing unit testing and typed interfaces to ensure reliable AI behavior in high-stakes environments[cite: 26, 94].</span>
+              <span><strong>Reliability First:</strong> I design LLM pipelines using typed interfaces and modular retrieval layers to ensure predictable system behavior in domain-specific environments.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-accent font-bold">•</span>
-              <span><strong>Stack Agnostic Deployment:</strong> Experienced in migrating production AI stacks across providers (e.g., OpenAI to Google Gemini) while maintaining interface stability[cite: 94].</span>
+              <span><strong>Stack-Flexible LLM Integration:</strong> Experienced migrating RAG systems across model providers (OpenAI → Gemini) while maintaining interface stability and deployment continuity.</span>
             </li>
           </ul>
         </section>
