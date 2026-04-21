@@ -29,6 +29,18 @@
   --color-accent-hover: #d9a876;
 }
 
+/* Mobile First - Ensure proper mobile rendering */
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+  }
+  
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+  }
+}
+
 /* Base Styles */
 @layer base {
   html {
@@ -42,6 +54,7 @@
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -54,6 +67,10 @@
 
   button {
     @apply transition-all duration-200;
+  }
+
+  img {
+    @apply max-w-full h-auto;
   }
 }
 
@@ -70,63 +87,63 @@
 
   /* Buttons */
   .btn-primary {
-    @apply bg-[#2d2624] text-white px-6 py-3 rounded-md font-medium hover:bg-[#1f1b19] transition-all;
+    @apply bg-[#2d2624] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-medium hover:bg-[#1f1b19] transition-all text-sm sm:text-base;
   }
 
   .btn-secondary {
-    @apply border border-[#d5bdaf] text-[#2d2624] px-6 py-3 rounded-md font-medium hover:bg-[#f5ebe0] transition-all;
+    @apply border border-[#d5bdaf] text-[#2d2624] px-4 sm:px-6 py-2 sm:py-3 rounded-md font-medium hover:bg-[#f5ebe0] transition-all text-sm sm:text-base;
   }
 
   .btn-accent {
-    @apply bg-[#e7bc91] text-white px-6 py-3 rounded-md font-medium hover:bg-[#d9a876] transition-all;
+    @apply bg-[#e7bc91] text-white px-4 sm:px-6 py-2 sm:py-3 rounded-md font-medium hover:bg-[#d9a876] transition-all text-sm sm:text-base;
   }
 
   .btn-ghost {
-    @apply text-[#2d2624] px-4 py-2 rounded hover:bg-[#edede9] transition-all;
+    @apply text-[#2d2624] px-3 sm:px-4 py-2 rounded hover:bg-[#edede9] transition-all text-sm sm:text-base;
   }
 
   /* Links */
   .link-primary {
-    @apply text-[#2d2624] underline hover:text-[#d5bdaf] transition-colors;
+    @apply text-[#2d2624] underline hover:text-[#d5bdaf] transition-colors text-sm sm:text-base;
   }
 
   .link-accent {
-    @apply text-[#e7bc91] hover:text-[#d9a876] transition-colors;
+    @apply text-[#e7bc91] hover:text-[#d9a876] transition-colors text-sm sm:text-base;
   }
 
   .link-light {
-    @apply text-[#6b6562] hover:text-[#2d2624] transition-colors;
+    @apply text-[#6b6562] hover:text-[#2d2624] transition-colors text-xs sm:text-sm;
   }
 
   /* Navigation */
   .nav-link {
-    @apply text-[#2d2624] hover:text-[#e7bc91] transition-colors;
+    @apply text-[#2d2624] hover:text-[#e7bc91] transition-colors text-sm sm:text-base;
   }
 
   .nav-link-active {
-    @apply text-[#e7bc91] font-medium;
+    @apply text-[#e7bc91] font-medium text-sm sm:text-base;
   }
 
   /* Sections */
   .section-header {
-    @apply text-2xl md:text-3xl font-serif text-[#2d2624] mb-6;
+    @apply text-xl sm:text-2xl md:text-3xl font-serif text-[#2d2624] mb-4 sm:mb-6;
   }
 
   .section-description {
-    @apply text-[#6b6562] leading-relaxed;
+    @apply text-[#6b6562] leading-relaxed text-sm sm:text-base;
   }
 
   /* Badges */
   .badge {
-    @apply inline-block bg-[#e3d5ca] text-[#2d2624] px-3 py-1 rounded-full text-xs font-medium;
+    @apply inline-block bg-[#e3d5ca] text-[#2d2624] px-2 sm:px-3 py-1 rounded-full text-xs font-medium;
   }
 
   .badge-accent {
-    @apply inline-block bg-[#e7bc91] text-white px-3 py-1 rounded-full text-xs font-medium;
+    @apply inline-block bg-[#e7bc91] text-white px-2 sm:px-3 py-1 rounded-full text-xs font-medium;
   }
 
   .badge-light {
-    @apply inline-block bg-[#edede9] text-[#6b6562] px-3 py-1 rounded-full text-xs font-medium;
+    @apply inline-block bg-[#edede9] text-[#6b6562] px-2 sm:px-3 py-1 rounded-full text-xs font-medium;
   }
 
   /* Divider */
@@ -140,11 +157,16 @@
 
   /* Form Elements */
   .input-base {
-    @apply w-full px-4 py-2 border border-[#d6ccc2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#e7bc91] focus:border-transparent;
+    @apply w-full px-3 sm:px-4 py-2 border border-[#d6ccc2] rounded-md focus:outline-none focus:ring-2 focus:ring-[#e7bc91] focus:border-transparent text-sm;
   }
 
-  .input-base:placeholder {
+  .input-base::placeholder {
     @apply text-[#9a9390];
+  }
+
+  /* Accent Bar */
+  .accent-bar {
+    @apply p-4 sm:p-6 border-l-4 border-[#e7bc91] bg-white rounded-r-lg;
   }
 
   /* Highlight */

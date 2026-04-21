@@ -1,42 +1,68 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { useState } from 'react'
 import { siteConfig } from '../config/site'
 
 export default function Resume() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
     <div className="min-h-screen bg-cream text-primary font-sans" suppressHydrationWarning>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <title>Resume | {siteConfig.name}</title>
       </Head>
 
       {/* Navigation */}
-      <nav className="flex justify-between items-center px-8 py-6 max-w-7xl mx-auto">
-        <Link href={siteConfig.routes.home} className="text-xl font-medium tracking-tight nav-link">
-          {siteConfig.name}
+      <nav className="flex justify-between items-center px-4 sm:px-6 lg:px-8 py-4 sm:py-6 max-w-7xl mx-auto">
+        <Link href={siteConfig.routes.home} className="text-lg sm:text-xl font-medium tracking-tight nav-link">
+          {siteConfig.shortName}
         </Link>
-        <div className="flex items-center gap-8 text-sm font-medium">
+        
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="lg:hidden flex flex-col gap-1"
+          aria-label="Toggle menu"
+        >
+          <span className={`w-6 h-0.5 bg-primary transition-all ${mobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-primary transition-all ${mobileMenuOpen ? 'opacity-0' : ''}`}></span>
+          <span className={`w-6 h-0.5 bg-primary transition-all ${mobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+        </button>
+
+        {/* Desktop Navigation */}
+        <div className="hidden lg:flex items-center gap-4 lg:gap-8 text-sm font-medium">
           <Link href={siteConfig.routes.research} className="nav-link">Research</Link>
           <Link href={siteConfig.routes.resume} className="nav-link-active">Resume</Link>
           <Link href={siteConfig.routes.contact} className="btn-primary rounded-full">Contact</Link>
         </div>
       </nav>
 
-      <main className="max-w-4xl mx-auto px-8 py-12">
-        <h1 className="text-4xl md:text-5xl font-serif mb-8 text-primary">Resume & Experience</h1>
+      {/* Mobile Navigation Menu */}
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-[#e3d5ca] px-4 py-4 flex flex-col gap-3">
+          <Link href={siteConfig.routes.research} className="nav-link py-2" onClick={() => setMobileMenuOpen(false)}>Research</Link>
+          <Link href={siteConfig.routes.resume} className="nav-link-active py-2" onClick={() => setMobileMenuOpen(false)}>Resume</Link>
+          <Link href={siteConfig.routes.contact} className="btn-primary rounded-full text-center py-2" onClick={() => setMobileMenuOpen(false)}>Contact</Link>
+        </div>
+      )}
+
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-6 sm:mb-8 text-primary">Resume & Experience</h1>
 
         {/* Education */}
-        <section className="mb-12">
-          <h2 className="section-header">Education</h2>
+        <section className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl font-serif text-[#2d2624] mb-4 sm:mb-6">Education</h2>
           
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg border border-slate-200">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-semibold text-slate-900">{siteConfig.degree}</h3>
-                <span className="text-sm text-slate-500">Expected {siteConfig.year}</span>
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-white p-4 sm:p-6 rounded-lg border border-slate-200">
+              <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900">{siteConfig.degree}</h3>
+                <span className="text-xs sm:text-sm text-slate-500 whitespace-nowrap">Expected {siteConfig.year}</span>
               </div>
-              <p className="text-slate-700 font-medium mb-2">{siteConfig.university}</p>
-              <p className="text-slate-600 text-sm">{siteConfig.location}</p>
-              <p className="text-slate-700 leading-relaxed mt-4">
+              <p className="text-sm sm:text-slate-700 font-medium mb-1 sm:mb-2">{siteConfig.university}</p>
+              <p className="text-xs sm:text-sm text-slate-600">{siteConfig.location}</p>
+              <p className="text-slate-700 text-sm leading-relaxed mt-3 sm:mt-4">
                 Focus on Natural Language Processing, Machine Learning, and Information Retrieval Systems. Specialized research in developing source-grounded conversational AI and retrieval-augmented generation architectures.
               </p>
             </div>
@@ -44,75 +70,75 @@ export default function Resume() {
         </section>
 
         {/* Professional Experience */}
-        <section className="mb-12">
-          <h2 className="section-header">Professional Experience</h2>
+        <section className="mb-8 sm:mb-12">
+          <h2 className="text-xl sm:text-2xl font-serif text-[#2d2624] mb-4 sm:mb-6">Professional Experience</h2>
           
-          <div className="space-y-6">
-            <div className="bg-white p-6 rounded-lg border border-slate-200">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-semibold text-slate-900">Research Assistant & AI Developer</h3>
-                <span className="text-sm text-slate-500">2024 - Present</span>
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-white p-4 sm:p-6 rounded-lg border border-slate-200">
+              <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900">Research Assistant & AI Developer</h3>
+                <span className="text-xs sm:text-sm text-slate-500 whitespace-nowrap">2024 - Present</span>
               </div>
-              <p className="text-slate-700 font-medium mb-4">Universität Hamburg</p>
-              <ul className="space-y-2 text-slate-700">
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+              <p className="text-sm sm:text-slate-700 font-medium mb-3 sm:mb-4">Universität Hamburg</p>
+              <ul className="space-y-1 sm:space-y-2 text-xs sm:text-slate-700">
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Developing and deploying retrieval-augmented generation (RAG) systems for medical and scientific applications</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Building multimodal agentic architectures for complex information retrieval tasks</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Contributing to source-grounded conversational AI research and implementation</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Publishing peer-reviewed research contributions in NLP and RAG systems</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg border border-slate-200">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-semibold text-slate-900">NLP Engineer</h3>
-                <span className="text-sm text-slate-500">2023 - 2024</span>
+            <div className="bg-white p-4 sm:p-6 rounded-lg border border-slate-200">
+              <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900">NLP Engineer</h3>
+                <span className="text-xs sm:text-sm text-slate-500 whitespace-nowrap">2023 - 2024</span>
               </div>
-              <p className="text-slate-700 font-medium mb-4">AI Research Initiative</p>
-              <ul className="space-y-2 text-slate-700">
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+              <p className="text-sm sm:text-slate-700 font-medium mb-3 sm:mb-4">AI Research Initiative</p>
+              <ul className="space-y-1 sm:space-y-2 text-xs sm:text-slate-700">
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Implemented end-to-end NLP pipelines for scientific literature analysis</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Designed and deployed information extraction systems handling 64,000+ scientific records</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Collaborated on developing evaluation frameworks for conversational AI systems</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white p-6 rounded-lg border border-slate-200">
-              <div className="flex justify-between items-start mb-2">
-                <h3 className="text-lg font-semibold text-slate-900">Machine Learning Intern</h3>
-                <span className="text-sm text-slate-500">2022 - 2023</span>
+            <div className="bg-white p-4 sm:p-6 rounded-lg border border-slate-200">
+              <div className="flex flex-col sm:flex-row justify-between items-start mb-2 gap-2">
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900">Machine Learning Intern</h3>
+                <span className="text-xs sm:text-sm text-slate-500 whitespace-nowrap">2022 - 2023</span>
               </div>
-              <p className="text-slate-700 font-medium mb-4">Tech Company</p>
-              <ul className="space-y-2 text-slate-700">
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+              <p className="text-sm sm:text-slate-700 font-medium mb-3 sm:mb-4">Tech Company</p>
+              <ul className="space-y-1 sm:space-y-2 text-xs sm:text-slate-700">
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Developed machine learning models for text classification and retrieval tasks</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Contributed to data preprocessing and feature engineering pipelines</span>
                 </li>
-                <li className="flex gap-3">
-                  <span className="text-accent font-semibold">•</span>
+                <li className="flex gap-2 sm:gap-3">
+                  <span className="text-accent font-semibold flex-shrink-0">•</span>
                   <span>Participated in code reviews and collaborative development workflows</span>
                 </li>
               </ul>
