@@ -100,41 +100,41 @@ export default function Contact() {
         </div>
       )}
 
-      <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif mb-4 sm:mb-6 text-primary">Get in Touch</h1>
+      <main className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 lg:py-12">
+        <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-serif mb-2 sm:mb-4 lg:mb-6 text-primary">Get in Touch</h1>
         
-        <p className="section-description text-sm sm:text-base lg:text-lg mb-8 sm:mb-12">
+        <p className="section-description text-xs sm:text-sm lg:text-base mb-6 sm:mb-10 lg:mb-12">
           I'm interested in research collaborations and speaking opportunities. Feel free to reach out!
         </p>
 
-        <section className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12">
-          <div className="card p-4 sm:p-6">
-            <h3 className="text-base sm:text-lg font-semibold text-primary mb-4">Direct Contact</h3>
-            <div className="space-y-4">
+        <section className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-10 lg:mb-12">
+          <div className="card p-3 sm:p-4 lg:p-6">
+            <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-primary mb-3 sm:mb-4">Direct Contact</h3>
+            <div className="space-y-3 sm:space-y-4">
               <div>
                 <p className="text-xs sm:text-sm text-muted uppercase tracking-wide mb-1">Email</p>
-                <a href={`mailto:${siteConfig.email}`} className="text-blue-600 hover:underline text-sm sm:text-slate-900 break-all">
+                <a href={`mailto:${siteConfig.email}`} className="text-blue-600 hover:underline text-xs sm:text-sm break-all">
                   {siteConfig.email}
                 </a>
               </div>
               <div>
                 <p className="text-xs sm:text-sm text-muted uppercase tracking-wide mb-1">LinkedIn</p>
-                <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm">
+                <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs sm:text-sm">
                   View Profile
                 </a>
               </div>
               <div>
                 <p className="text-xs sm:text-sm text-muted uppercase tracking-wide mb-1">GitHub</p>
-                <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-sm break-all">
+                <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline text-xs sm:text-sm break-all">
                   {siteConfig.github}
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="card p-4 sm:p-6">
-            <h3 className="text-base sm:text-lg font-semibold text-primary mb-4">Quick Inquiry Types</h3>
-            <ul className="space-y-2 text-secondary text-xs sm:text-sm">
+          <div className="card p-3 sm:p-4 lg:p-6">
+            <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-primary mb-3 sm:mb-4">Quick Inquiry Types</h3>
+            <ul className="space-y-1 sm:space-y-2 text-secondary text-xs sm:text-sm">
               <li>• Research collaboration inquiries</li>
               <li>• Speaking engagements</li>
               <li>• Academic partnerships</li>
@@ -143,55 +143,55 @@ export default function Contact() {
           </div>
         </section>
 
-        <section className="card p-4 sm:p-6 lg:p-8">
-          <h2 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-primary">Send a Message</h2>
+        <section className="card p-3 sm:p-4 lg:p-6">
+          <h2 className="text-base sm:text-lg lg:text-xl font-semibold mb-3 sm:mb-4 lg:mb-6 text-primary">Send a Message</h2>
           
           {!isHydrated ? (
-            <div className="text-center text-muted text-sm">Loading...</div>
+            <div className="text-center text-muted text-xs sm:text-sm">Loading...</div>
           ) : submitted ? (
-            <div className="bg-accent/10 border border-accent rounded-lg p-4 sm:p-6 text-center">
-              <p className="text-accent font-medium text-sm sm:text-base">✓ Thank you for your message!</p>
+            <div className="bg-accent/10 border border-accent rounded-lg p-3 sm:p-4 lg:p-6 text-center">
+              <p className="text-accent font-medium text-xs sm:text-sm lg:text-base">✓ Thank you for your message!</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4 lg:space-y-6">
               {error && <div className="text-red-700 text-xs sm:text-sm">{error}</div>}
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-slate-900 mb-2">Name</label>
-                <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-3 sm:px-4 py-2 border rounded-md text-sm" placeholder="Your name" />
+                <label className="block text-xs sm:text-sm font-medium text-slate-900 mb-1 sm:mb-2">Name</label>
+                <input type="text" name="name" value={formData.name} onChange={handleInputChange} required className="w-full px-2 sm:px-3 lg:px-4 py-2 border rounded-md text-xs sm:text-sm" placeholder="Your name" />
               </div>
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-slate-900 mb-2">Email</label>
-                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-3 sm:px-4 py-2 border rounded-md text-sm" placeholder="your.email@example.com" />
+                <label className="block text-xs sm:text-sm font-medium text-slate-900 mb-1 sm:mb-2">Email</label>
+                <input type="email" name="email" value={formData.email} onChange={handleInputChange} required className="w-full px-2 sm:px-3 lg:px-4 py-2 border rounded-md text-xs sm:text-sm" placeholder="your.email@example.com" />
               </div>
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-slate-900 mb-2">Subject</label>
-                <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} required className="w-full px-3 sm:px-4 py-2 border rounded-md text-sm" placeholder="What is this about?" />
+                <label className="block text-xs sm:text-sm font-medium text-slate-900 mb-1 sm:mb-2">Subject</label>
+                <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} required className="w-full px-2 sm:px-3 lg:px-4 py-2 border rounded-md text-xs sm:text-sm" placeholder="What is this about?" />
               </div>
               <div>
-                <label className="block text-xs sm:text-sm font-medium text-slate-900 mb-2">Message</label>
-                <textarea name="message" value={formData.message} onChange={handleInputChange} required rows="6" className="w-full px-3 sm:px-4 py-2 border rounded-md resize-none text-sm" placeholder="Tell me more..."></textarea>
+                <label className="block text-xs sm:text-sm font-medium text-slate-900 mb-1 sm:mb-2">Message</label>
+                <textarea name="message" value={formData.message} onChange={handleInputChange} required rows="5" className="w-full px-2 sm:px-3 lg:px-4 py-2 border rounded-md resize-none text-xs sm:text-sm" placeholder="Tell me more..."></textarea>
               </div>
-              <button type="submit" disabled={isLoading} className="w-full bg-slate-900 text-white py-2.5 sm:py-3 rounded-md font-medium hover:bg-slate-800 disabled:bg-slate-500 text-sm sm:text-base">
+              <button type="submit" disabled={isLoading} className="w-full bg-slate-900 text-white py-2 sm:py-2.5 lg:py-3 rounded-md font-medium hover:bg-slate-800 disabled:bg-slate-500 text-xs sm:text-sm lg:text-base">
                 {isLoading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           )}
         </section>
 
-        <section className="mt-8 sm:mt-12 card-neutral p-4 sm:p-6 rounded-lg">
-          <h3 className="text-base sm:text-lg font-semibold text-primary mb-4">Prefer a Different Approach?</h3>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-            <a href={`mailto:${siteConfig.email}`} className="btn-primary text-center px-4 sm:px-6 py-2 sm:py-3">Email</a>
-            <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="btn-secondary text-center px-4 sm:px-6 py-2 sm:py-3">LinkedIn Profile</a>
-            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="btn-secondary text-center px-4 sm:px-6 py-2 sm:py-3">Visit GitHub</a>
+        <section className="mt-6 sm:mt-10 lg:mt-12 card-neutral p-3 sm:p-4 lg:p-6 rounded-lg">
+          <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-primary mb-3 sm:mb-4">Prefer a Different Approach?</h3>
+          <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3">
+            <a href={`mailto:${siteConfig.email}`} className="btn-primary text-center px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm lg:text-base">Email</a>
+            <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="btn-secondary text-center px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm lg:text-base">LinkedIn Profile</a>
+            <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="btn-secondary text-center px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm lg:text-base">Visit GitHub</a>
           </div>
         </section>
       </main>
 
-      <footer className="px-4 sm:px-6 lg:px-8 py-6 sm:py-8 divider mt-12 sm:mt-16">
-        <div className="max-w-7xl mx-auto flex flex-col gap-3 sm:flex-row justify-between items-center text-muted text-xs sm:text-sm">
+      <footer className="px-4 sm:px-6 lg:px-8 py-6 sm:py-8 divider mt-8 sm:mt-12 lg:mt-16">
+        <div className="max-w-7xl mx-auto flex flex-col gap-2 sm:gap-0 sm:flex-row justify-between items-center text-muted text-xs sm:text-sm">
           <p>{siteConfig.copyrightText}</p>
-          <div className="flex gap-3 sm:gap-6 text-xs sm:text-sm">
+          <div className="flex gap-3 sm:gap-4 lg:gap-6 text-xs sm:text-sm">
             <a href={`mailto:${siteConfig.email}`} className="link-light">Email</a>
             <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="link-light">LinkedIn</a>
             <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="link-light">GitHub</a>
