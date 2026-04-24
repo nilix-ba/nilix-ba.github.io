@@ -68,6 +68,9 @@ export default function Home() {
               </p>
             </div>
             <div className="pt-2 sm:pt-4 flex flex-col sm:flex-row gap-2 sm:gap-3 lg:gap-4">
+              <Link href={siteConfig.routes.resume} className="btn-primary inline-block text-center px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm lg:text-base">
+                Resume
+              </Link>
               <Link href={siteConfig.routes.research} className="btn-primary inline-block text-center px-3 sm:px-4 lg:px-6 py-2 sm:py-2.5 lg:py-3 text-xs sm:text-sm lg:text-base">
                 Research
               </Link>
