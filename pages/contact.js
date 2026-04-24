@@ -195,7 +195,6 @@ export default function Contact() {
             <a href={`mailto:${siteConfig.email}`} className="link-light">Email</a>
             <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="link-light">LinkedIn</a>
             <a href={siteConfig.github} target="_blank" rel="noopener noreferrer" className="link-light">GitHub</a>
-            <Link href={siteConfig.routes.research} className="link-light">Research</Link>
           </div>
         </div>
       </footer>

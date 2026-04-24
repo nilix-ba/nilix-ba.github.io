@@ -181,7 +181,7 @@ export default function Research() {
           <div className="flex gap-4 sm:gap-6 lg:gap-8 mt-3 sm:mt-0">
             <a href={`mailto:${siteConfig.email}`} className="link-light">Email</a>
             <a href={siteConfig.github} className="link-light">GitHub</a>
-            <p className="text-[#6b6562]">English • German (B1) • Persian</p>
+            <a href={siteConfig.linkedIn} target="_blank" rel="noopener noreferrer" className="link-light">linkedIn</a>
           </div>
         </div>
       </footer>
